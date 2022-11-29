@@ -257,13 +257,13 @@ def test_bucket_listv2_encoding_basic():
     client = get_client()
 
     response = client.list_objects_v2(Bucket=bucket_name, Delimiter='/', EncodingType='url')
-    eq(response['Delimiter'], '/')
+    eq(response['Delimiter'], '%2F')
     keys = _get_keys(response)
     eq(keys, ['asdf%2Bb'])
 
     prefixes = _get_prefixes(response)
     eq(len(prefixes), 3)
-    eq(prefixes, ['foo%2B1/', 'foo/', 'quux%20ab/'])
+    eq(prefixes, ['foo%2B1%2F', 'foo%2F', 'quux%20ab%2F'])
 
 @attr(resource='bucket')
 @attr(method='get')
