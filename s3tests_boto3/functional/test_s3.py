@@ -14101,8 +14101,8 @@ def test_object_read_unreadable():
     client = get_client()
     e = assert_raises(ClientError, client.get_object, Bucket=bucket_name, Key='\xae\x8a-')
     status, error_code = _get_status_and_error_code(e.response)
-    eq(status, 400)
-    eq(e.response['Error']['Message'], 'Couldn\'t parse the specified URI.')
+    eq(status, 404)
+    eq(e.response['Error']['Message'], 'The specified key does not exist.')
 
 @attr(resource='bucket')
 @attr(method='get')
