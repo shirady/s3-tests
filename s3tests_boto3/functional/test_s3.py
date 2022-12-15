@@ -826,6 +826,7 @@ def test_bucket_list_prefix_basic():
 
     response = client.list_objects(Bucket=bucket_name, Prefix='foo/')
     print('SDSD', response)
+    eq(1, 2) #fail the test on purpose
     eq(response['Prefix'], 'foo/')
 
     keys = _get_keys(response)
@@ -846,6 +847,7 @@ def test_bucket_listv2_prefix_basic():
 
     response = client.list_objects_v2(Bucket=bucket_name, Prefix='foo/')
     print('SDSD', response)
+    eq(1, 2) #fail the test on purpose
     eq(response['Prefix'], 'foo/')
 
     keys = _get_keys(response)
